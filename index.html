@@ -4,203 +4,474 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RR Pest Solutions | Zero Pests</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
 
-    <style>             
         body, html {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: #000;
             color: #fff;
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* Changed from overflow: hidden to allow vertical scrolling */
+            overflow-x: hidden;
         }
 
-        /* Wrap the hero section to keep the video contained */
+        a { color: inherit; text-decoration: none; }
+
+        /* ── HERO ── */
         .hero-wrapper {
             position: relative;
-            height: 100vh;
-            width: 100%;
+            height: 100vh; width: 100%;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
         }
-
         .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; z-index: 1;
         }
-
         .hero-wrapper::before {
             content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.85)); /* Slightly darker at the bottom for smooth transition */
+            position: absolute; inset: 0;
+            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.85));
             z-index: 2;
         }
-
         .hero-heading {
-            font-family: "Manrope", sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-size: clamp(2.2rem, 8vw, 5.5rem);
-            font-weight: 400;
-            line-height: 1;
+            font-weight: 400; line-height: 1;
             letter-spacing: -0.03em;
         }
-
-        .orange-text {
-            color: #f6a14e;
-        }
-
+        .orange-text { color: #f6a14e; }
         .cta-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.7;
-            margin-bottom: 12px;
-            margin-left: 10px;
+            font-size: 12px; text-transform: uppercase;
+            letter-spacing: 0.1em; opacity: 0.7;
+            margin-bottom: 12px; margin-left: 10px;
         }
-
         .apple-button {
-            background-color: #fff;
-            color: #000;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            background: #fff; color: #000;
+            padding: 12px 24px; border-radius: 50px;
+            font-weight: 600; font-size: 14px;
+            display: inline-flex; align-items: center; gap: 10px;
             transition: transform 0.2s ease;
+            cursor: pointer; border: none;
         }
-
-        .apple-button:hover {
-            transform: scale(1.05);
-        }
-
+        .apple-button:hover { transform: scale(1.05); }
         .description-block {
-            max-width: 380px;
-            font-size: 16px;
-            line-height: 1.5;
-            opacity: 0.9;
+            max-width: 380px; font-size: 16px;
+            line-height: 1.5; opacity: 0.9;
         }
 
+        /* ── NAV ── */
         nav {
-            position: relative;
-            z-index: 10;
+            position: relative; z-index: 10;
             padding: 20px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 12px;
         }
-
-        .nav-links a {
-            margin-right: 20px;
-            font-size: 13px;
-            opacity: 0.8;
-            transition: opacity 0.2s;
+        .nav-brand {
+            display: flex; align-items: center; gap: 12px;
+            font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
         }
-
-        .nav-links a:hover {
-            opacity: 1;
-            color: #f6a14e;
+        .nav-icon {
+            width: 20px; height: 20px; background: #f6a14e;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 3px; flex-shrink: 0;
         }
+        .nav-icon span { color: #000; font-size: 10px; font-weight: 700; }
+        .nav-links { display: flex; }
+        .nav-links a { margin-right: 20px; font-size: 13px; opacity: 0.8; transition: opacity 0.2s; }
+        .nav-links a:hover { opacity: 1; color: #f6a14e; }
+        .nav-btn {
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 16px; border-radius: 50px;
+            font-size: 12px; font-weight: 600;
+            background: transparent; color: #fff;
+            cursor: pointer; transition: background 0.2s, color 0.2s;
+        }
+        .nav-btn:hover { background: #fff; color: #000; }
 
         .content-container {
-            position: relative;
-            z-index: 10;
-            flex-grow: 1;
-            padding: 0 24px 40px 24px;
-            display: flex;
-            flex-direction: column;
+            position: relative; z-index: 10;
+            flex-grow: 1; padding: 0 24px 40px 24px;
+            display: flex; flex-direction: column;
             justify-content: space-between;
         }
+        .hero-top { padding-top: 80px; }
+        .bottom-section { display: flex; justify-content: space-between; align-items: flex-end; }
 
-        /* NEW: Feature Card Styling */
+        /* ── FEATURES ── */
+        .section-features { padding: 96px; background: #050505; }
+        .section-inner { max-width: 1280px; margin: 0 auto; }
+        .features-header { margin-bottom: 64px; }
+        .features-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 400; margin: 0 0 16px; line-height: 1.15;
+        }
+        .features-sub { color: #9ca3af; max-width: 560px; font-size: 18px; margin: 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
         .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px; padding: 32px;
             transition: all 0.3s ease;
         }
         .feature-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(246, 161, 78, 0.3);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(246,161,78,0.3);
             transform: translateY(-5px);
         }
+        .feature-icon {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: rgba(246,161,78,0.1);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+        }
+        .feature-icon svg { width: 24px; height: 24px; color: #f6a14e; }
+        .feature-title { font-family: 'Manrope',sans-serif; font-size: 20px; font-weight: 700; margin: 0 0 12px; }
+        .feature-desc { color: #9ca3af; font-size: 14px; line-height: 1.6; margin: 0; }
 
+        /* ── ABOUT ── */
+        .section-about {
+            padding: 128px 96px;
+            background: #050505;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .about-headline { max-width: 896px; text-align: center; margin-bottom: 40px; }
+        .about-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-weight: 400; line-height: 1.15;
+            letter-spacing: -0.02em; margin: 0 0 32px;
+        }
+        .about-title .muted { color: #6b7280; transition: color 0.5s; }
+        .about-title .muted:hover { color: #9ca3af; }
+        .about-mission {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 14px; font-weight: 500; color: #d1d5db;
+        }
+        .mission-icon {
+            width: 18px; height: 18px; background: #f6a14e;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 3px; flex-shrink: 0;
+        }
+        .about-divider {
+            height: 96px; width: 1px;
+            background: linear-gradient(to bottom, rgba(246,161,78,0.4), transparent);
+            margin: 8px 0;
+        }
+        .clients-pill {
+            display: flex; align-items: center; gap: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px; padding: 8px 20px; margin-top: 16px;
+        }
+        .clients-avatars { display: flex; }
+        .clients-avatars img {
+            width: 28px; height: 28px; border-radius: 50%;
+            border: 2px solid #050505; object-fit: cover;
+            margin-left: -8px;
+        }
+        .clients-avatars img:first-child { margin-left: 0; }
+        .clients-pill-text { font-size: 14px; color: #d1d5db; font-weight: 500; letter-spacing: 0.02em; }
+        .clients-pill-text .hl { color: #f6a14e; font-weight: 700; }
+
+        /* ── TESTIMONIALS ── */
+        .testi-section { background: #050505; padding: 96px 0; overflow: hidden; }
+        .testi-header { text-align: center; margin-bottom: 64px; padding: 0 24px; }
+        .testi-eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
+            color: #f6a14e; font-weight: 600; margin-bottom: 20px;
+        }
+        .testi-eyebrow-line { width: 32px; height: 1px; background: rgba(246,161,78,0.5); }
+        .testi-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 400; color: #fff;
+            letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 16px;
+        }
+        .testi-title span { color: #f6a14e; }
+        .testi-subtitle {
+            color: rgba(255,255,255,0.45); font-size: 16px;
+            max-width: 480px; margin: 0 auto; line-height: 1.6;
+        }
+        .marquee-wrapper {
+            position: relative;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+        .testi-fade-left {
+            position: absolute; left: 0; top: 0; bottom: 0; width: 140px;
+            background: linear-gradient(to right, #050505, transparent);
+            z-index: 10; pointer-events: none;
+        }
+        .testi-fade-right {
+            position: absolute; right: 0; top: 0; bottom: 0; width: 140px;
+            background: linear-gradient(to left, #050505, transparent);
+            z-index: 10; pointer-events: none;
+        }
+        .marquee-row { display: flex; gap: 20px; width: max-content; }
+        .row-right { animation: scrollRight 60s linear infinite; }
+        .row-left  { animation: scrollLeft  55s linear infinite; }
+        @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        @keyframes scrollLeft  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-wrapper:hover .row-right,
+        .marquee-wrapper:hover .row-left { animation-play-state: paused; }
+        .t-card {
+            flex-shrink: 0; width: 300px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 18px; padding: 22px 22px 18px;
+            display: flex; flex-direction: column; gap: 10px;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+        .t-card:hover { border-color: rgba(246,161,78,0.28); background: rgba(255,255,255,0.05); }
+        .t-quote-icon { font-size: 30px; color: #f6a14e; line-height: 1; font-family: Georgia, serif; }
+        .t-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.65; min-height: 90px; margin: 0; }
+        .t-stars { display: flex; gap: 3px; }
+        .t-star {
+            width: 11px; height: 11px; background: #f6a14e;
+            clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+        }
+        .t-author {
+            display: flex; align-items: center; gap: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06); padding-top: 14px;
+        }
+        .t-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(246,161,78,0.08);
+            border: 1px solid rgba(246,161,78,0.2);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .t-avatar svg { width: 22px; height: 22px; }
+        .t-name { font-size: 13px; font-weight: 600; color: #fff; font-family: 'Manrope',sans-serif; margin: 0; }
+        .t-role { font-size: 11px; color: rgba(255,255,255,0.32); margin: 2px 0 0; letter-spacing: 0.03em; }
+
+        /* ── EXCELLENCE ── */
+        .excellence-section { background: #050505; padding: 0 96px 128px; }
+        .excellence-grid {
+            max-width: 1152px; margin: 0 auto;
+            display: grid; grid-template-columns: 7fr 5fr; gap: 48px;
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 64px;
+        }
+        .excellence-label {
+            color: #f6a14e; font-weight: 600; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.2em; margin: 0 0 16px;
+        }
+        .excellence-body { color: #9ca3af; line-height: 1.7; font-size: 17px; margin: 0 0 24px; }
+        .excellence-body strong { color: #fff; font-weight: 500; }
+        .badge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .badge {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px; border-radius: 12px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .badge:hover { background: rgba(255,255,255,0.05); border-color: rgba(246,161,78,0.3); }
+        .badge p { color: #fff; font-weight: 500; font-size: 14px; margin: 0; }
+
+        /* ── CLIENTS ── */
+        .section-clients { padding: 96px; background: #050505; overflow: hidden; }
+        .clients-header { text-align: center; margin-bottom: 64px; }
+        .section-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
+            color: #f6a14e; font-weight: 600; margin-bottom: 20px;
+        }
+        .eyebrow-line { width: 32px; height: 1px; background: rgba(246,161,78,0.5); }
+        .clients-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 400; letter-spacing: -0.02em; margin: 0 0 20px;
+        }
+        .clients-sub { color: #9ca3af; max-width: 560px; margin: 0 auto; font-size: 17px; line-height: 1.6; }
+        .clients-marquee-wrap { position: relative; }
+        .clients-fade-left {
+            position: absolute; left: 0; top: 0; bottom: 0; width: 160px;
+            background: linear-gradient(to right, #050505, transparent);
+            z-index: 10; pointer-events: none;
+        }
+        .clients-fade-right {
+            position: absolute; right: 0; top: 0; bottom: 0; width: 160px;
+            background: linear-gradient(to left, #050505, transparent);
+            z-index: 10; pointer-events: none;
+        }
+        .marquee-container { overflow: hidden; width: 100%; }
+        .marquee-track {
+            display: flex; gap: 24px;
+            animation: marquee-scroll 30s linear infinite;
+            width: max-content;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+        @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .client-card {
+            flex-shrink: 0; width: 220px; text-align: center;
+            cursor: pointer; transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .client-card:hover { transform: translateY(-8px); }
+        .client-logo-wrapper {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 20px;
+            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+            position: relative;
+        }
+        .client-logo-wrapper::before {
+            content: ''; position: absolute; inset: 0; border-radius: 16px;
+            background: radial-gradient(circle at 50% 50%, rgba(246,161,78,0.06) 0%, transparent 70%);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .client-card:hover .client-logo-wrapper {
+            border-color: rgba(246,161,78,0.35);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 8px 40px rgba(246,161,78,0.08), 0 0 0 1px rgba(246,161,78,0.1);
+        }
+        .client-card:hover .client-logo-wrapper::before { opacity: 1; }
+        .client-logo {
+            width: 100%; height: 100%; object-fit: contain; border-radius: 8px;
+            filter: grayscale(30%) brightness(0.9); transition: all 0.4s ease;
+        }
+        .client-card:hover .client-logo { filter: grayscale(0%) brightness(1); transform: scale(1.05); }
+        .client-name {
+            font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 14px;
+            color: #e5e5e5; margin: 14px 0 0; transition: color 0.3s ease;
+        }
+        .client-card:hover .client-name { color: #f6a14e; }
+        .client-sub { font-size: 12px; color: rgba(255,255,255,0.35); margin: 3px 0 0; letter-spacing: 0.02em; }
+
+
+        /* ── SERVICES ── */
+        .section-services { background: #050505; padding: 96px; }
+        .services-header { text-align: center; margin-bottom: 64px; }
+        .services-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 400; letter-spacing: -0.02em; margin: 0 0 20px;
+        }
+        .services-subtitle { color: #9ca3af; max-width: 520px; margin: 0 auto; font-size: 16px; line-height: 1.6; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 36px 28px;
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(246,161,78,0.07) 0%, transparent 65%);
+            opacity: 0; transition: opacity 0.35s ease;
+        }
+        .service-card:hover { border-color: rgba(246,161,78,0.3); transform: translateY(-6px); background: rgba(255,255,255,0.05); }
+        .service-card:hover::before { opacity: 1; }
+        .service-card.featured {
+            border-color: rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.03);
+        }
+        .service-card.featured::before { opacity: 0; }
+        .service-icon-wrap {
+            width: 72px; height: 72px;
+            background: rgba(246,161,78,0.08);
+            border: 1px solid rgba(246,161,78,0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 22px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .service-card:hover .service-icon-wrap {
+            background: rgba(246,161,78,0.14);
+            border-color: rgba(246,161,78,0.35);
+        }
+        .service-icon-wrap svg { width: 32px; height: 32px; }
+        .service-name {
+            font-family: 'Manrope', sans-serif;
+            font-size: 18px; font-weight: 700;
+            color: #fff; margin: 0 0 12px;
+        }
+        .service-card.featured .service-name { font-size: 22px; }
+        .service-desc { color: #9ca3af; font-size: 13.5px; line-height: 1.7; margin: 0; }
+        .service-card.featured .service-desc { font-size: 14.5px; }
+        .amc-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(246,161,78,0.12);
+            border: 1px solid rgba(246,161,78,0.25);
+            border-radius: 50px; padding: 5px 14px;
+            font-size: 11px; font-weight: 600;
+            color: #f6a14e; letter-spacing: 0.1em;
+            text-transform: uppercase; margin-bottom: 24px;
+        }
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .service-card.featured { grid-column: auto; grid-row: auto; }
+        }
+        @media (max-width: 600px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .section-services { padding: 64px 24px; }
+        }
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .section-features, .section-about, .section-clients, .excellence-section { padding-left: 40px; padding-right: 40px; }
+        }
         @media (max-width: 768px) {
-            .bottom-section {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 24px;
-            }
-
-            .description-block {
-                max-width: 100%;
-                font-size: 15px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero-heading {
-                margin-top: 30px;
-            }
+            .bottom-section { flex-direction: column; align-items: flex-start; gap: 24px; }
+            .description-block { max-width: 100%; font-size: 15px; }
+            .nav-links { display: none; }
+            .hero-top { padding-top: 30px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .excellence-grid { grid-template-columns: 1fr; }
+            .t-card { width: 270px; }
+            .testi-fade-left, .testi-fade-right { width: 60px; }
+            .client-card { width: 170px; }
+            .marquee-track { gap: 16px; }
+            .section-features, .section-about, .section-clients, .excellence-section { padding-left: 24px; padding-right: 24px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ── HERO ── -->
     <div class="hero-wrapper">
         <video class="hero-bg" autoplay muted loop playsinline>
             <source src="./backgroundvideo.mp4" type="video/mp4">
         </video>
-
         <nav>
-            <div class="flex items-center gap-3 font-bold text-lg tracking-tight">
-                <div class="w-5 h-5 bg-[#f6a14e] flex items-center justify-center rounded-sm">
-                    <span class="text-black text-[10px]">R</span>
-                </div>
+            <div class="nav-brand">
+                <div class="nav-icon"><span>R</span></div>
                 RR Pest Solutions
             </div>
-
-            <div class="hidden md:flex nav-links">
+            <div class="nav-links">
                 <a href="#features">Features</a>
-                <a href="#how-it-works">How it works</a>
-                <a href="#pricing">Pricing</a>
+                <a href="#about">About</a>
+                <a href="#clients">Clients</a>
             </div>
-
-            <button class="border border-white/20 px-4 py-2 rounded-full text-xs font-semibold hover:bg-white hover:text-black transition">
-                Get App
-            </button>
+            <button class="nav-btn">Get App</button>
         </nav>
-
         <div class="content-container">
-            <div class="pt-20 md:pt-28">
+            <div class="hero-top">
                 <h1 class="hero-heading">
                     Zero Pests,<br>
-                    <span class="orange-text">Zero Stress.<br> Guaranteed</span>
+                    <span class="orange-text">Zero Stress.<br>Guaranteed</span>
                 </h1>
             </div>
-
-            <div class="bottom-section flex justify-between items-end">
+            <div class="bottom-section">
                 <div>
                     <p class="cta-label">Get Started for services</p>
-                    <button class="apple-button">
-                        Secure Your Space Today
-                    </button>
+                    <button class="apple-button">Secure Your Space Today</button>
                 </div>
-
                 <div class="description-block">
                     Rapid response, undetectable treatments, and permanent solutions from industry-leading pest specialists. RR Pest Solutions helps you reclaim your environment.
                 </div>
@@ -208,342 +479,321 @@
         </div>
     </div>
 
-    <section id="features" class="py-24 px-6 md:px-24 bg-[#050505]">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-16">
-                <h2 class="font-['Manrope'] text-3xl md:text-5xl mb-4">Precision Eradication,<br><span class="text-[#f6a14e]">Maximum Discretion.</span></h2>
-                <p class="text-gray-400 max-w-xl text-lg">We don't just treat the symptoms; we eliminate the source. Our advanced methodologies ensure your space remains untouched by pests.</p>
+    <!-- ── OUR SERVICES ── -->
+    <section id="services" class="section-services">
+        <div class="services-header">
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                What We Do
+                <div class="eyebrow-line"></div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="feature-card p-8 rounded-2xl">
-                    <div class="w-12 h-12 rounded-full bg-[#f6a14e]/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-[#f6a14e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 font-['Manrope']">Rapid Response Team</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Deployed within hours of your request. Our specialized units identify and neutralize threats before they escalate.</p>
-                </div>
-
-                <div class="feature-card p-8 rounded-2xl">
-                    <div class="w-12 h-12 rounded-full bg-[#f6a14e]/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-[#f6a14e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 font-['Manrope']">Undetectable Treatments</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">No odors, no messy residues. We use targeted micro-treatments that are invisible to humans but lethal to pests.</p>
-                </div>
-
-                <div class="feature-card p-8 rounded-2xl">
-                    <div class="w-12 h-12 rounded-full bg-[#f6a14e]/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-[#f6a14e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 font-['Manrope']">Permanent Solutions</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Beyond eradication, we fortify your environment to ensure pests never return. Backed by our ironclad guarantee.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-32 px-6 md:px-24 bg-[#050505] relative flex flex-col items-center justify-center">
-
-    <div class="max-w-4xl mx-auto text-center mb-10">
-        <h2 class="font-['Manrope'] text-3xl md:text-5xl lg:text-[56px] font-normal leading-tight tracking-tight text-white mb-8">
-            We believe your space should be your sanctuary, <span class="text-gray-500 transition-colors duration-500 hover:text-gray-400">not a battleground — delivering complete pest protection with honest, eco-friendly solutions.</span>
-        </h2>
-
-        <div class="inline-flex items-center gap-2 text-sm font-medium text-gray-300">
-            <div class="w-[18px] h-[18px] bg-[#f6a14e] flex items-center justify-center rounded-[3px]">
-                <svg class="w-3.5 h-3.5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="12" y1="2" x2="12" y2="22"></line>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
-                    <line x1="4.93" y1="19.07" x2="19.07" y2="4.93"></line>
-                </svg>
-            </div>
-            RR Pest Solutions' Mission
-        </div>
-    </div>
-
-    <div class="h-24 w-[1px] bg-gradient-to-b from-[#f6a14e]/40 to-transparent my-2"></div>
-
-    <div class="flex items-center gap-3 bg-white/[0.03] border border-white/10 rounded-full py-2 px-5 mt-4 backdrop-blur-sm shadow-xl">
-        <div class="flex -space-x-2">
-            <img class="w-7 h-7 rounded-full border-2 border-[#050505] object-cover" src="https://i.pravatar.cc/100?img=33" alt="Client">
-            <img class="w-7 h-7 rounded-full border-2 border-[#050505] object-cover" src="https://i.pravatar.cc/100?img=47" alt="Client">
-            <img class="w-7 h-7 rounded-full border-2 border-[#050505] object-cover" src="https://i.pravatar.cc/100?img=12" alt="Client">
-        </div>
-        <p class="text-sm text-gray-300 font-medium tracking-wide">
-            Over <span class="text-[#f6a14e] font-bold">500+ clients</span> handled seamlessly.
-        </p>
-    </div>
-
-    <div class="max-w-6xl w-full mx-auto mt-32 grid grid-cols-1 lg:grid-cols-12 gap-12 text-left border-t border-white/10 pt-16">
-        
-        <div class="lg:col-span-7">
-            <h3 class="text-[#f6a14e] font-semibold mb-4 text-xs uppercase tracking-[0.2em]">Excellence, One Job at a Time</h3>
-            <p class="text-gray-400 leading-relaxed text-base md:text-lg mb-6">
-                Established in 2013, RR Pest Solutions is among the premier pest management companies. We bring over <strong class="text-white font-medium">12+ years of technical expertise</strong> to every job, offering a comprehensive range of professional pest management and sanitization services.
-            </p>
-            <p class="text-gray-400 leading-relaxed text-base md:text-lg">
-                We have constantly endeavored to introduce better, more cost-effective technology to ensure complete customer satisfaction. Honest and clear, every step of the way.
-            </p>
+            <h2 class="services-title">Our <span class="orange-text">Services</span></h2>
+            <p class="services-subtitle">From termites to lizards, we handle every pest with precision, speed, and guaranteed results.</p>
         </div>
 
-        <div class="lg:col-span-5 flex flex-col justify-center">
-            <div class="grid grid-cols-2 gap-4">
-                <div class="bg-white/[0.02] border border-white/5 p-5 rounded-xl transition hover:bg-white/[0.05] hover:border-[#f6a14e]/30">
-                    <p class="text-white font-medium text-sm">✓ Licensed & Insured</p>
-                </div>
-                <div class="bg-white/[0.02] border border-white/5 p-5 rounded-xl transition hover:bg-white/[0.05] hover:border-[#f6a14e]/30">
-                    <p class="text-white font-medium text-sm">✓ 100% Guaranteed</p>
-                </div>
-                <div class="bg-white/[0.02] border border-white/5 p-5 rounded-xl transition hover:bg-white/[0.05] hover:border-[#f6a14e]/30">
-                    <p class="text-white font-medium text-sm">✓ Eco-Friendly</p>
-                </div>
-                <div class="bg-white/[0.02] border border-white/5 p-5 rounded-xl transition hover:bg-white/[0.05] hover:border-[#f6a14e]/30">
-                    <p class="text-white font-medium text-sm">✓ Sanitization</p>
-                </div>
-            </div>
-        </div>
+        <div class="services-grid">
 
-    </div>
-
-</section>
-
-    <!-- Our Clients Section -->
-    <section id="clients" class="py-24 px-6 md:px-24 bg-[#050505] overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#f6a14e] font-semibold mb-5">
-                    <div class="w-8 h-[1px] bg-[#f6a14e]/50"></div>
-                    Trusted Partners
-                    <div class="w-8 h-[1px] bg-[#f6a14e]/50"></div>
+            <!-- Termite Control -->
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="24" cy="28" rx="7" ry="9" stroke="#f6a14e" stroke-width="2"/>
+                        <circle cx="24" cy="13" r="5" stroke="#f6a14e" stroke-width="2"/>
+                        <line x1="24" y1="18" x2="24" y2="19" stroke="#f6a14e" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="17" y1="22" x2="10" y2="18" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="31" y1="22" x2="38" y2="18" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="17" y1="28" x2="10" y2="26" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="31" y1="28" x2="38" y2="26" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="19" y1="34" x2="15" y2="40" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="29" y1="34" x2="33" y2="40" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
                 </div>
-                <h2 class="font-['Manrope'] text-3xl md:text-5xl font-normal tracking-tight mb-5">
-                    Our <span class="text-[#f6a14e]">Clients</span>
-                </h2>
-                <p class="text-gray-400 max-w-xl mx-auto text-base md:text-lg leading-relaxed">
-                    Trusted by leading brands across industries — we deliver pest-free environments at scale.
-                </p>
+                <h3 class="service-name">Termite Control</h3>
+                <p class="service-desc">Effective treatment and prevention of termite infestations to protect your property's structure.</p>
             </div>
 
-            <!-- Infinite Scrolling Marquee -->
-            <div class="relative">
-                <!-- Gradient fade edges -->
-                <div class="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
-
-                <div class="marquee-container">
-                    <div class="marquee-track">
-                        <!-- First set of logos -->
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_brother.png" alt="Brother" class="client-logo">
-                            </div>
-                            <p class="client-name">Brother</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_prakash.png" alt="Prakash" class="client-logo">
-                            </div>
-                            <p class="client-name">Prakash</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_skyjumper.png" alt="SkyJumper" class="client-logo">
-                            </div>
-                            <p class="client-name">SkyJumper</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_burma.png" alt="Burma Biscuit Co." class="client-logo">
-                            </div>
-                            <p class="client-name">Burma</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_hyundai.png" alt="Beeaar Hyundai" class="client-logo">
-                            </div>
-                            <p class="client-name">Beeaar Hyundai</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <!-- Duplicate set for seamless infinite scroll -->
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_brother.png" alt="Brother" class="client-logo">
-                            </div>
-                            <p class="client-name">Brother</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_prakash.png" alt="Prakash" class="client-logo">
-                            </div>
-                            <p class="client-name">Prakash</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_skyjumper.png" alt="SkyJumper" class="client-logo">
-                            </div>
-                            <p class="client-name">SkyJumper</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_burma.png" alt="Burma Biscuit Co." class="client-logo">
-                            </div>
-                            <p class="client-name">Burma</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-
-                        <div class="client-card group">
-                            <div class="client-logo-wrapper">
-                                <img src="./logo_hyundai.png" alt="Beeaar Hyundai" class="client-logo">
-                            </div>
-                            <p class="client-name">Beeaar Hyundai</p>
-                            <p class="client-sub">RR-AbodeCare Client</p>
-                        </div>
-                    </div>
+            <!-- Cockroaches Control -->
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="24" cy="26" rx="8" ry="10" stroke="#f6a14e" stroke-width="2"/>
+                        <ellipse cx="24" cy="15" rx="5" ry="6" stroke="#f6a14e" stroke-width="2"/>
+                        <line x1="22" y1="10" x2="18" y2="6" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="26" y1="10" x2="30" y2="6" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="16" y1="22" x2="8" y2="19" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="32" y1="22" x2="40" y2="19" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="16" y1="28" x2="8" y2="28" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="32" y1="28" x2="40" y2="28" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="18" y1="34" x2="14" y2="40" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="30" y1="34" x2="34" y2="40" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
                 </div>
+                <h3 class="service-name">Cockroaches Control</h3>
+                <p class="service-desc">Roaches are tough, but we're tougher! Our team eliminates these sneaky pests, leaving your home clean and critter-free.</p>
+            </div>
+
+            <!-- Ant Treatment -->
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="30" r="6" stroke="#f6a14e" stroke-width="2"/>
+                        <circle cx="24" cy="20" r="4" stroke="#f6a14e" stroke-width="2"/>
+                        <circle cx="24" cy="13" r="3" stroke="#f6a14e" stroke-width="2"/>
+                        <line x1="20" y1="17" x2="14" y2="14" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="28" y1="17" x2="34" y2="14" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="18" y1="28" x2="10" y2="25" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="30" y1="28" x2="38" y2="25" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="19" y1="34" x2="15" y2="40" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="29" y1="34" x2="33" y2="40" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-name">Ant Treatment</h3>
+                <p class="service-desc">Tired of ants marching through your home? Our team specializes in evicting these tiny invaders, so you can reclaim your space without a single crumb left behind.</p>
+            </div>
+
+            <!-- Bugs Control -->
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="24" cy="26" rx="6" ry="8" stroke="#f6a14e" stroke-width="2"/>
+                        <circle cx="24" cy="15" r="4" stroke="#f6a14e" stroke-width="2"/>
+                        <path d="M18 22 Q12 20 10 14" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                        <path d="M30 22 Q36 20 38 14" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                        <line x1="18" y1="27" x2="10" y2="27" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="30" y1="27" x2="38" y2="27" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="19" y1="32" x2="14" y2="38" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="29" y1="32" x2="34" y2="38" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-name">Bugs Control</h3>
+                <p class="service-desc">Bugs may be persistent, but we're relentless! Our expert team ensures your home and workspace stays bug-free, with no critters left behind.</p>
+            </div>
+
+            <!-- Lizard Control -->
+            <div class="service-card">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="22" cy="26" rx="9" ry="6" stroke="#f6a14e" stroke-width="2"/>
+                        <ellipse cx="22" cy="18" rx="5" ry="4" stroke="#f6a14e" stroke-width="2"/>
+                        <path d="M27 22 Q36 18 40 22 Q36 24 31 24" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                        <line x1="16" y1="30" x2="10" y2="36" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="20" y1="32" x2="17" y2="40" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="26" y1="31" x2="28" y2="38" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="29" y1="29" x2="34" y2="34" stroke="#f6a14e" stroke-width="1.8" stroke-linecap="round"/>
+                        <circle cx="20" cy="16" r="1" fill="#f6a14e"/>
+                    </svg>
+                </div>
+                <h3 class="service-name">Lizard Control</h3>
+                <p class="service-desc">Lizards may be fast, but we're faster! Our expert team delivers effective lizard control, keeping your home or workspace safe and free from these unwanted guests.</p>
+            </div>
+
+            <!-- AMC -->
+            <div class="service-card featured">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 6L8 12v10c0 10 7.2 18.4 16 20 8.8-1.6 16-10 16-20V12L24 6z" stroke="#f6a14e" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M17 24l5 5 9-9" stroke="#f6a14e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-name">AMC</h3>
+                <p class="service-desc">Pests don't wait for problems to grow — why should you? With our Annual Maintenance Contract (AMC), you get year-round protection, ensuring your home stays pest-free without the hassle. Stay ahead of pests and save with regular, expert care — because peace of mind is priceless!</p>
             </div>
 
         </div>
     </section>
 
-    <style>
-        /* Marquee Animation */
-        .marquee-container {
-            overflow: hidden;
-            width: 100%;
+
+    <!-- ── FEATURES ── -->
+    <section id="features" class="section-features">
+        <div class="section-inner">
+            <div class="features-header">
+                <h2 class="features-title">Precision Eradication,<br><span class="orange-text">Maximum Discretion.</span></h2>
+                <p class="features-sub">We don't just treat the symptoms; we eliminate the source. Our advanced methodologies ensure your space remains untouched by pests.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="feature-title">Rapid Response Team</h3>
+                    <p class="feature-desc">Deployed within hours of your request. Our specialized units identify and neutralize threats before they escalate.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="feature-title">Undetectable Treatments</h3>
+                    <p class="feature-desc">No odors, no messy residues. We use targeted micro-treatments that are invisible to humans but lethal to pests.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </div>
+                    <h3 class="feature-title">Permanent Solutions</h3>
+                    <p class="feature-desc">Beyond eradication, we fortify your environment to ensure pests never return. Backed by our ironclad guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="section-about">
+        <div class="about-headline">
+            <h2 class="about-title">
+                We believe your space should be your sanctuary,
+                <span class="muted">not a battleground — delivering complete pest protection with honest, eco-friendly solutions.</span>
+            </h2>
+            <div class="about-mission">
+                <div class="mission-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/>
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="19.07" y2="4.93"/>
+                    </svg>
+                </div>
+                RR Pest Solutions' Mission
+            </div>
+        </div>
+        <div class="about-divider"></div>
+        <div class="clients-pill">
+            <div class="clients-avatars">
+                <img src="https://i.pravatar.cc/100?img=33" alt="Client">
+                <img src="https://i.pravatar.cc/100?img=47" alt="Client">
+                <img src="https://i.pravatar.cc/100?img=12" alt="Client">
+            </div>
+            <p class="clients-pill-text">Over <span class="hl">500+ clients</span> handled seamlessly.</p>
+        </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section id="testimonials" class="testi-section">
+        <div class="testi-header">
+            <div class="testi-eyebrow">
+                <div class="testi-eyebrow-line"></div>
+                What Our Clients Say
+                <div class="testi-eyebrow-line"></div>
+            </div>
+            <h2 class="testi-title">Trusted by <span>Hundreds</span> Across Lucknow</h2>
+            <p class="testi-subtitle">Real experiences from real people — because our work speaks for itself.</p>
+        </div>
+        <div class="marquee-wrapper">
+            <div class="testi-fade-left"></div>
+            <div class="testi-fade-right"></div>
+            <div class="marquee-row row-right" id="testi-row1"></div>
+            <div class="marquee-row row-left"  id="testi-row2"></div>
+        </div>
+    </section>
+
+    <!-- ── EXCELLENCE ── -->
+    <section class="excellence-section">
+        <div class="excellence-grid">
+            <div>
+                <p class="excellence-label">Excellence, One Job at a Time</p>
+                <p class="excellence-body">Established in 2013, RR Pest Solutions is among the premier pest management companies. We bring over <strong>12+ years of technical expertise</strong> to every job, offering a comprehensive range of professional pest management and sanitization services.</p>
+                <p class="excellence-body">We have constantly endeavored to introduce better, more cost-effective technology to ensure complete customer satisfaction. Honest and clear, every step of the way.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;">
+                <div class="badge-grid">
+                    <div class="badge"><p>✓ Licensed &amp; Insured</p></div>
+                    <div class="badge"><p>✓ 100% Guaranteed</p></div>
+                    <div class="badge"><p>✓ Eco-Friendly</p></div>
+                    <div class="badge"><p>✓ Sanitization</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ── OUR CLIENTS ── -->
+    <section id="clients" class="section-clients">
+        <div class="clients-header">
+            <div class="section-eyebrow">
+                <div class="eyebrow-line"></div>
+                Trusted Partners
+                <div class="eyebrow-line"></div>
+            </div>
+            <h2 class="clients-title">Our <span class="orange-text">Clients</span></h2>
+            <p class="clients-sub">Trusted by leading brands across industries — we deliver pest-free environments at scale.</p>
+        </div>
+        <div class="clients-marquee-wrap">
+            <div class="clients-fade-left"></div>
+            <div class="clients-fade-right"></div>
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_brother.png" alt="Brother" class="client-logo"></div><p class="client-name">Brother</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_prakash.png" alt="Prakash" class="client-logo"></div><p class="client-name">Prakash</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_skyjumper.png" alt="SkyJumper" class="client-logo"></div><p class="client-name">SkyJumper</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_burma.png" alt="Burma Biscuit Co." class="client-logo"></div><p class="client-name">Burma</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_hyundai.png" alt="Beeaar Hyundai" class="client-logo"></div><p class="client-name">Beeaar Hyundai</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <!-- duplicate for seamless loop -->
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_brother.png" alt="Brother" class="client-logo"></div><p class="client-name">Brother</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_prakash.png" alt="Prakash" class="client-logo"></div><p class="client-name">Prakash</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_skyjumper.png" alt="SkyJumper" class="client-logo"></div><p class="client-name">SkyJumper</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_burma.png" alt="Burma Biscuit Co." class="client-logo"></div><p class="client-name">Burma</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                    <div class="client-card"><div class="client-logo-wrapper"><img src="./logo_hyundai.png" alt="Beeaar Hyundai" class="client-logo"></div><p class="client-name">Beeaar Hyundai</p><p class="client-sub">RR-AbodeCare Client</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const testimonials = [
+            { name: "Vikas Singh",       review: "They are the best pest control service provider in Lucknow. I used their rodent cleaning service and I am very impressed. They got rid of all the rodents — quality is top-notch and affordable. Highly recommend." },
+            { name: "Harsh Pathak",      review: "One of the best pest control services in Lucknow. Used their cockroach and termite extermination service. Proper inspection, effective treatment, warranty provided, honest pricing, and professional behaviour." },
+            { name: "PathakEstates",     review: "Took mosquito extermination and general pest control service. Staff was punctual and knowledgeable. After treatment, mosquito problem reduced drastically. Rates are reasonable compared to other pest control services nearby." },
+            { name: "Saksham Jaiswal",   review: "Great experience with RR Pest Solutions, Lucknow. Team was professional, punctual, and knowledgeable. Highly recommended for reliable and affordable pest control services." },
+            { name: "Anshu",             review: "Very good experience of termite treatment and pest control services. Rates are reasonable and warranty is provided. Took service today. Thanks RR Pest Solutions." },
+            { name: "Anushree Sharma",   review: "Took termite treatment service at my house in Gomti Nagar, Lucknow. Very satisfied with the work done by the professional team." },
+            { name: "Shreeja Saini",     review: "Excellent service by Pest Solutions. Very professional staff, timely service, and effective treatment. Highly recommended for pest control in Lucknow." },
+            { name: "Sarwan Rawat",      review: "Best pest control service for termite in Lucknow. Thorough inspection, effective treatment, and great customer support throughout the process." },
+            { name: "Aashirwad Palace",  review: "Very good experience. Cockroach and flies control done in my hostel. Very good service and the staff was cooperative throughout." },
+            { name: "Himanshu Yadav",    review: "Good pest control service. Staff was on time and work was done properly. Satisfied with the results and will definitely use the service again." },
+            { name: "Rudra Singh",       review: "Best termite and cockroach control service in Gomti Nagar. Very happy with the results and the professionalism of the team." },
+            { name: "Himanshu",          review: "Service was very nice. Solved the pest problem properly. Fully satisfied with the work done by RR Pest Solutions." },
+            { name: "Piyush Kumar",      review: "Best pest treatment in Lucknow. Got termite control done. Best service and professionalism. Will definitely recommend to family and friends." },
+            { name: "Anshu Gupta",       review: "Best pest control service. Termite treatment done. Satisfied with the work and the team was very cooperative and professional." },
+            { name: "Anuvi Srivastava",  review: "Took termite service at my home in Viraj Khand. Fully satisfied. Highly recommend RR Pest Solutions to anyone looking for pest control." },
+            { name: "Krishna Rai",       review: "Best solution for pests. Now I can sleep peacefully at night. Best service and affordable too. Very happy with the results." },
+            { name: "Mohd Salman",       review: "Took general pest control in my shop. Satisfied with the work done. Staff was courteous and professional. Will use again." },
+            { name: "Tanush Arora",      review: "Really very good and efficient pest control service. Impressed with the professionalism and effectiveness of the treatment applied." },
+            { name: "Harshpreet Singh",  review: "Very nice service and good behaviour by the staff. Impressed with the professionalism and the effectiveness of the treatment." },
+            { name: "Ishan Sharma",      review: "Very nice service. Fully satisfied with the pest control done at my home. Would recommend RR Pest Solutions to everyone." },
+        ];
+
+        function avatarSVG() {
+            return `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="4" fill="rgba(246,161,78,0.55)"/>
+                <ellipse cx="12" cy="19" rx="7" ry="4" fill="rgba(246,161,78,0.35)"/>
+            </svg>`;
         }
 
-        .marquee-track {
-            display: flex;
-            gap: 24px;
-            animation: marquee-scroll 30s linear infinite;
-            width: max-content;
+        function makeCard(t) {
+            return `<div class="t-card">
+                <div class="t-quote-icon">"</div>
+                <p class="t-text">${t.review}</p>
+                <div class="t-stars">${'<div class="t-star"></div>'.repeat(5)}</div>
+                <div class="t-author">
+                    <div class="t-avatar">${avatarSVG()}</div>
+                    <div>
+                        <p class="t-name">${t.name}</p>
+                        <p class="t-role">Customer &middot; RR Pest Solutions</p>
+                    </div>
+                </div>
+            </div>`;
         }
 
-        .marquee-track:hover {
-            animation-play-state: paused;
+        const half = testimonials.length / 2;
+        const row1 = testimonials.slice(0, half);
+        const row2 = testimonials.slice(half);
+
+        function populateRow(id, items) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.innerHTML = [...items, ...items].map(makeCard).join('');
         }
 
-        @keyframes marquee-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Client Card */
-        .client-card {
-            flex-shrink: 0;
-            width: 220px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .client-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .client-logo-wrapper {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 20px;
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
-
-        .client-logo-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            background: radial-gradient(circle at 50% 50%, rgba(246, 161, 78, 0.06) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .client-card:hover .client-logo-wrapper {
-            border-color: rgba(246, 161, 78, 0.35);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 40px rgba(246, 161, 78, 0.08), 0 0 0 1px rgba(246, 161, 78, 0.1);
-        }
-
-        .client-card:hover .client-logo-wrapper::before {
-            opacity: 1;
-        }
-
-        .client-logo {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 8px;
-            filter: grayscale(30%) brightness(0.9);
-            transition: all 0.4s ease;
-        }
-
-        .client-card:hover .client-logo {
-            filter: grayscale(0%) brightness(1);
-            transform: scale(1.05);
-        }
-
-        .client-name {
-            font-family: 'Manrope', sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            color: #e5e5e5;
-            margin-top: 14px;
-            transition: color 0.3s ease;
-        }
-
-        .client-card:hover .client-name {
-            color: #f6a14e;
-        }
-
-        .client-sub {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.35);
-            margin-top: 3px;
-            letter-spacing: 0.02em;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .client-card {
-                width: 170px;
-            }
-            .marquee-track {
-                gap: 16px;
-            }
-        }
-    </style>
+        populateRow('testi-row1', row1);
+        populateRow('testi-row2', row2);
+    </script>
 
 </body>
 </html>
