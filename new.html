@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Pest Solutions</title>
+    <!-- The font 'Michroma' is the closest match to the original technical wide font -->
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-main: #FFFFFF;
+            --text-dim: #A0A0A0;
+            --text-dark: #555555;
+            --font-tech: 'Michroma', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body, html {
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+            color: var(--text-main);
+            font-family: var(--font-body);
+        }
+
+        /* VIDEO BACKGROUND */
+        .bg-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background: #000;
+        }
+        video {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.4); /* Darkens video to match original aesthetic */
+        }
+
+        /* UI ELEMENTS */
+        .wrapper {
+            height: 100vh;
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* Header section */
+        .top-row { display: flex; justify-content: space-between; align-items: flex-start; }
+        .brand-header {
+            font-family: var(--font-tech);
+            font-size: 42px;
+            line-height: 0.95;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .nav-status {
+            font-size: 11px; letter-spacing: 2px; color: var(--text-dim);
+            display: flex; align-items: center; gap: 15px;
+        }
+        .line-dec { width: 60px; height: 1px; background: var(--text-dark); }
+
+        /* Middle Section */
+        .main-body { display: flex; justify-content: space-between; align-items: center; flex-grow: 1; }
+        .description {
+            max-width: 350px; font-size: 13px; line-height: 1.4; color: var(--text-dim);
+        }
+
+        /* Tech Specs table */
+        .specs-panel { width: 320px; text-transform: uppercase; }
+        .specs-title {
+            font-family: var(--font-tech); font-size: 13px;
+            border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 5px;
+        }
+        .spec-row {
+            display: flex; justify-content: space-between;
+            padding: 10px 0; font-size: 11px; border-bottom: 1px solid #1a1a1a;
+        }
+        .spec-val { color: var(--text-main); }
+
+        /* Bottom Section */
+        .bottom-row { display: flex; justify-content: space-between; align-items: flex-end; }
+        .footer-left { max-width: 300px; }
+        .footer-h { font-family: var(--font-tech); font-size: 13px; margin-bottom: 10px; }
+        .footer-p { font-size: 12px; color: var(--text-dim); line-height: 1.4; margin-bottom: 20px; }
+        .cta { font-size: 11px; text-decoration: underline; cursor: pointer; }
+        
+        .footer-right-tags {
+            font-size: 11px; color: var(--text-dark); letter-spacing: 2px;
+            display: flex; gap: 20px; align-items: center;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .wrapper { padding: 30px; overflow-y: auto; }
+            .top-row, .main-body, .bottom-row { flex-direction: column; align-items: flex-start; gap: 30px; }
+            .brand-header { font-size: 30px; }
+            .specs-panel { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-container">
+        <!-- Relative path to bg.mp4 based on your folder image -->
+        <video id="bgVideo" autoplay muted loop playsinline>
+            <source src="./videobg.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="wrapper">
+        <div class="top-row">
+            <div class="brand-header">RR-PESTS //<br>SHIELD<br>GUARDIANS</div>
+            <div class="nav-status">1/28 <div class="line-dec"></div> NEXT SERVICE</div>
+        </div>
+
+        <div class="main-body">
+            <!-- Exactly 132 characters (matches original description count) -->
+            <div class="description">
+                Providing total pest-safe spaces and a zero-vermin zone for India who don't just hope for health—they ensure it. Guard your habitat.
+            </div>
+
+            <div class="specs-panel">
+                <div class="specs-title">SANITARYYY SPECS</div>
+                <div class="spec-row"><span>Safety</span> <span class="spec-val">Total Bio-Shielding</span></div>
+                <div class="spec-row"><span>Reach</span> <span class="spec-val">Pan-India Support</span></div>
+                <div class="spec-row"><span>Method</span> <span class="spec-val">Quick-Kill-Action</span></div>
+                <div class="spec-row"><span>Proof</span> <span class="spec-val">Professional Safe-Guards</span></div>
+            </div>
+        </div>
+
+        <div class="bottom-row">
+            <div class="footer-left">
+                <div class="footer-h">RR-01: SAFETY CORE</div>
+                <div class="footer-p">Anti-infestation fluids and a safe blends for health and hygiene.</div>
+                <div class="cta">Get a Quote</div>
+            </div>
+            <div class="footer-right-tags">
+                IN ISO &nbsp;&nbsp; A+ &nbsp;&nbsp; TOTAL-SAFE &nbsp;&nbsp; SAFETY-SYNC &nbsp; <span style="font-size: 24px; color: #888;">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Force-play video in case of browser 'autoplay' restrictions
+        window.addEventListener('load', function() {
+            var video = document.getElementById('bgVideo');
+            video.play().catch(function(error) {
+                console.log("Autoplay was prevented, waiting for interaction.");
+            });
+        });
+    </script>
+</body>
+</html>
