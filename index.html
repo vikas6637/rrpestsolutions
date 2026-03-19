@@ -422,9 +422,245 @@
             .services-grid { grid-template-columns: 1fr; }
             .section-services { padding: 64px 24px; }
         }
+
+        /* ── CONTACT ── */
+        .section-contact { background: #050505; padding: 96px; }
+        .contact-wrap {
+            max-width: 1152px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start;
+        }
+        .contact-left { position: sticky; top: 40px; }
+        .contact-tagline {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.6rem);
+            font-weight: 400; line-height: 1.2;
+            letter-spacing: -0.02em; margin: 0 0 24px;
+        }
+        .contact-tagline span { color: #f6a14e; }
+        .contact-blurb { color: #9ca3af; font-size: 15px; line-height: 1.7; margin: 0 0 40px; }
+        .contact-info-item {
+            display: flex; align-items: flex-start; gap: 14px; margin-bottom: 22px;
+        }
+        .contact-info-icon {
+            width: 38px; height: 38px; flex-shrink: 0;
+            background: rgba(246,161,78,0.08);
+            border: 1px solid rgba(246,161,78,0.18);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .contact-info-icon svg { width: 16px; height: 16px; }
+        .contact-info-label { font-size: 11px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 3px; }
+        .contact-info-val { font-size: 14px; color: #fff; font-weight: 500; margin: 0; }
+        .contact-info-val a { color: #fff; text-decoration: none; }
+        .contact-info-val a:hover { color: #f6a14e; }
+        .contact-hours { font-size: 13px; color: rgba(255,255,255,0.5); margin: 4px 0 0; }
+
+        /* Form */
+        .contact-form {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 24px; padding: 40px;
+        }
+        .form-title { font-family: 'Manrope',sans-serif; font-size: 20px; font-weight: 700; margin: 0 0 28px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+        .form-group.no-mb { margin-bottom: 0; }
+        .form-label { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; text-transform: uppercase; }
+        .form-input, .form-select, .form-area {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px; padding: 13px 16px;
+            color: #fff; font-size: 14px; font-family: 'Inter', sans-serif;
+            outline: none; transition: border-color 0.2s, background 0.2s;
+            width: 100%;
+        }
+        .form-input::placeholder, .form-area::placeholder { color: rgba(255,255,255,0.25); }
+        .form-input:focus, .form-select:focus, .form-area:focus {
+            border-color: rgba(246,161,78,0.45);
+            background: rgba(255,255,255,0.06);
+        }
+        .form-select { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+        .form-select option { background: #1a1a1a; color: #fff; }
+        .form-area { resize: vertical; min-height: 90px; }
+        .area-row { display: grid; grid-template-columns: 1fr 100px; gap: 12px; margin-bottom: 16px; }
+        .submit-btn {
+            width: 100%; padding: 15px;
+            background: #f6a14e; color: #000;
+            border: none; border-radius: 12px;
+            font-size: 15px; font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+            cursor: pointer; letter-spacing: 0.01em;
+            transition: opacity 0.2s, transform 0.2s;
+            margin-top: 8px;
+        }
+        .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .submit-btn:active { transform: translateY(0); }
+        @media (max-width: 900px) {
+            .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+            .contact-left { position: static; }
+        }
+        @media (max-width: 600px) {
+            .section-contact { padding: 64px 24px; }
+            .contact-form { padding: 28px 20px; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+        /* ── FOOTER ── */
+        .footer-cta {
+            background: linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+            padding: 80px 96px 0;
+            text-align: center;
+        }
+        .footer-cta-inner {
+            max-width: 720px; margin: 0 auto;
+            background: linear-gradient(135deg, rgba(246,161,78,0.08) 0%, rgba(255,255,255,0.03) 50%, rgba(246,161,78,0.05) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 64px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        .footer-cta-inner::before {
+            content: ''; position: absolute; top: -60%; left: -20%; width: 140%; height: 140%;
+            background: radial-gradient(ellipse at 50% 0%, rgba(246,161,78,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .footer-cta-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 700; color: #fff;
+            margin: 0 0 12px; position: relative;
+        }
+        .footer-cta-sub {
+            color: rgba(255,255,255,0.5); font-size: 15px;
+            line-height: 1.6; margin: 0 0 32px; position: relative;
+        }
+        .footer-cta-btn {
+            display: inline-block; background: #fff; color: #000;
+            padding: 14px 32px; border-radius: 50px;
+            font-weight: 700; font-size: 14px;
+            font-family: 'Manrope', sans-serif;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .footer-cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 24px rgba(246,161,78,0.2);
+        }
+
+        .site-footer {
+            background: #0a0a0a;
+            padding: 80px 96px 0;
+        }
+        .footer-inner {
+            max-width: 1152px; margin: 0 auto;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 56px 56px 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand-name {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700; font-size: 18px;
+            margin-bottom: 16px; color: #fff;
+        }
+        .footer-brand-icon {
+            width: 22px; height: 22px; background: #f6a14e;
+            border-radius: 4px; display: flex;
+            align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .footer-brand-icon span { color: #000; font-size: 11px; font-weight: 700; }
+        .footer-brand-desc {
+            color: rgba(255,255,255,0.4);
+            font-size: 13.5px; line-height: 1.7;
+            margin: 0 0 24px; max-width: 280px;
+        }
+        .footer-socials {
+            display: flex; gap: 10px;
+        }
+        .footer-social-link {
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, border-color 0.2s;
+            color: rgba(255,255,255,0.5);
+        }
+        .footer-social-link:hover {
+            background: rgba(246,161,78,0.12);
+            border-color: rgba(246,161,78,0.3);
+            color: #f6a14e;
+        }
+        .footer-social-link svg { width: 16px; height: 16px; }
+
+        .footer-col-title {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700; font-size: 14px;
+            color: #fff; margin: 0 0 20px;
+            letter-spacing: 0.01em;
+        }
+        .footer-links { list-style: none; margin: 0; padding: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a {
+            color: rgba(255,255,255,0.4); font-size: 13.5px;
+            transition: color 0.2s; text-decoration: none;
+        }
+        .footer-links a:hover { color: #f6a14e; }
+
+        .footer-contact-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 14px;
+        }
+        .footer-contact-icon {
+            margin-top: 2px; flex-shrink: 0; color: #f6a14e;
+        }
+        .footer-contact-icon svg { width: 14px; height: 14px; }
+        .footer-contact-text {
+            font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5;
+        }
+        .footer-contact-text a {
+            color: rgba(255,255,255,0.45); text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-contact-text a:hover { color: #f6a14e; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px;
+        }
+        .footer-copy {
+            font-size: 12.5px; color: rgba(255,255,255,0.3); margin: 0;
+        }
+        .footer-legal {
+            display: flex; gap: 24px;
+        }
+        .footer-legal a {
+            font-size: 12.5px; color: rgba(255,255,255,0.3);
+            text-decoration: none; transition: color 0.2s;
+        }
+        .footer-legal a:hover { color: #f6a14e; }
+
+        .footer-bottom-spacer {
+            background: #0a0a0a;
+            padding: 0 96px 40px;
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .section-features, .section-about, .section-clients, .excellence-section { padding-left: 40px; padding-right: 40px; }
+            .footer-cta { padding: 60px 40px 0; }
+            .site-footer { padding: 60px 40px 0; }
+            .footer-bottom-spacer { padding: 0 40px 32px; }
         }
         @media (max-width: 768px) {
             .bottom-section { flex-direction: column; align-items: flex-start; gap: 24px; }
@@ -438,6 +674,13 @@
             .client-card { width: 170px; }
             .marquee-track { gap: 16px; }
             .section-features, .section-about, .section-clients, .excellence-section { padding-left: 24px; padding-right: 24px; }
+            .footer-cta { padding: 40px 24px 0; }
+            .footer-cta-inner { padding: 40px 24px; }
+            .site-footer { padding: 40px 24px 0; }
+            .footer-inner { padding: 32px 24px 28px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; }
+            .footer-bottom-spacer { padding: 0 24px 24px; }
         }
     </style>
 </head>
@@ -703,6 +946,134 @@
     </section>
 
 
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="section-contact">
+        <div class="contact-wrap">
+
+            <!-- Left: info -->
+            <div class="contact-left">
+                <div class="section-eyebrow" style="margin-bottom:20px;">
+                    <div class="eyebrow-line"></div>
+                    Get In Touch
+                    <div class="eyebrow-line"></div>
+                </div>
+                <h2 class="contact-tagline">Book a <span>Free</span><br>Consultation Today</h2>
+                <p class="contact-blurb">Tell us about your pest problem and we'll get back to you within hours. Fast response, honest pricing, guaranteed results.</p>
+
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg fill="none" stroke="#f6a14e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.51-1.51a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-info-label">Call Us</p>
+                        <p class="contact-info-val"><a href="tel:+919793162602">+91-9793162602</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg fill="none" stroke="#f6a14e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-info-label">Email Us</p>
+                        <p class="contact-info-val"><a href="mailto:info@abodecarepestsolutions.com">info@abodecarepestsolutions.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg fill="none" stroke="#f6a14e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-info-label">Visit Us</p>
+                        <p class="contact-info-val">SN 4/119, Vibhav Khand</p>
+                        <p class="contact-hours">Gomti Nagar, Lucknow, UP 226010</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg fill="none" stroke="#f6a14e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-info-label">Business Hours</p>
+                        <p class="contact-info-val">Monday to Sunday</p>
+                        <p class="contact-hours">Open all days</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: form -->
+            <div class="contact-form">
+                <p class="form-title">Schedule Your Inspection</p>
+
+                <div class="form-row">
+                    <div class="form-group no-mb">
+                        <label class="form-label">Name *</label>
+                        <input type="text" class="form-input" placeholder="Your full name">
+                    </div>
+                    <div class="form-group no-mb">
+                        <label class="form-label">Phone *</label>
+                        <input type="tel" class="form-input" placeholder="+91 00000 00000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Select Service *</label>
+                    <select class="form-select">
+                        <option value="" disabled selected>Select a service</option>
+                        <option>General Pest Inspection</option>
+                        <option>General Pest Control</option>
+                        <option>Termite Control</option>
+                        <option>Cockroach Control</option>
+                        <option>Bugs &amp; Insect Extermination</option>
+                        <option>Bed Bug Extermination</option>
+                        <option>Ant Extermination</option>
+                        <option>Mosquito Extermination</option>
+                        <option>Bee Extermination</option>
+                        <option>Deep Cleaning</option>
+                        <option>Disinfection &amp; Sanitization</option>
+                        <option>Office Sanitization Services</option>
+                        <option>Residential Sanitization</option>
+                        <option>Deemak Treatment</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Property Type *</label>
+                    <select class="form-select">
+                        <option value="" disabled selected>Select property type</option>
+                        <option>Single-family House</option>
+                        <option>Duplex / Townhouse</option>
+                        <option>Commercial Building (Office, Retail, Warehouse, Shop)</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Property Area *</label>
+                    <div class="area-row" style="margin-bottom:0;">
+                        <input type="number" class="form-input" placeholder="e.g. 1200">
+                        <select class="form-select">
+                            <option>sq ft</option>
+                            <option>sq m</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Preferred Date *</label>
+                    <input type="date" class="form-input" style="color-scheme: dark;">
+                </div>
+
+                <button class="submit-btn">Book Consultation</button>
+            </div>
+
+        </div>
+    </section>
+
     <!-- ── OUR CLIENTS ── -->
     <section id="clients" class="section-clients">
         <div class="clients-header">
@@ -794,6 +1165,129 @@
         populateRow('testi-row1', row1);
         populateRow('testi-row2', row2);
     </script>
+
+    <!-- ── FOOTER CTA ── -->
+    <div class="footer-cta">
+        <div class="footer-cta-inner">
+            <h2 class="footer-cta-title">Ready to eliminate pests?</h2>
+            <p class="footer-cta-sub">Join thousands of satisfied customers who trust RR Pest Solutions for a pest-free, stress-free environment.</p>
+            <a href="#contact" class="footer-cta-btn">Book Free Consultation</a>
+        </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+
+                <!-- Brand -->
+                <div>
+                    <div class="footer-brand-name">
+                        <div class="footer-brand-icon"><span>R</span></div>
+                        RR Pest Solutions
+                    </div>
+                    <p class="footer-brand-desc">
+                        RR-AbodeCare Pest Solutions — taking care of pests so you can relax and breathe easy. Professional, eco-friendly, guaranteed.
+                    </p>
+                    <div class="footer-socials">
+                        <!-- X / Twitter -->
+                        <a href="#" class="footer-social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="#" class="footer-social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="#" class="footer-social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/919793162602" class="footer-social-link" aria-label="WhatsApp" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <p class="footer-col-title">Quick Links</p>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Our Services -->
+                <div>
+                    <p class="footer-col-title">Our Services</p>
+                    <ul class="footer-links">
+                        <li><a href="#services">Termite Control</a></li>
+                        <li><a href="#services">Rodent Removal</a></li>
+                        <li><a href="#services">Ant Treatment</a></li>
+                        <li><a href="#services">Mosquito Solutions</a></li>
+                        <li><a href="#services">Bed Bug Elimination</a></li>
+                        <li><a href="#services">Commercial Pest Control</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <p class="footer-col-title">Contact Info</p>
+
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.94 6.94l1.51-1.51a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div class="footer-contact-text">
+                            <a href="tel:+919793162602">+91-9793162602</a>
+                        </div>
+                    </div>
+
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="footer-contact-text">
+                            <a href="mailto:info@abodecarepestsolutions.com">info@abodecarepestsolutions.com</a>
+                        </div>
+                    </div>
+
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="footer-contact-text">
+                            SN 4/119, Vibhav Khand,<br>Gomti Nagar, Lucknow,<br>Uttar Pradesh 226010
+                        </div>
+                    </div>
+
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="footer-contact-text">
+                            Mon – Sun: Open all days
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2023 RR-AbodeCare Pest Solutions. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom-spacer"></div>
 
 </body>
 </html>
